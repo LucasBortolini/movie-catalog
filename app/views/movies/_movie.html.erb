@@ -1,0 +1,57 @@
+<div id="<%= dom_id movie %>">
+  <p>
+    <strong>Name:</strong>
+    <%= movie.name %>
+  </p>
+
+  <p>
+    <strong>Director:</strong>
+    <%= movie.director %>
+  </p>
+
+  <p>
+    <strong>Writer:</strong>
+    <%= movie.writer %>
+  </p>
+
+  <p>
+    <strong>Gender:</strong>
+    <%= movie.genre %>
+  </p>
+
+  <p>
+    <strong>Parental rating:</strong>
+    <%= movie.parental_rating %>
+  </p>
+
+  <p>
+    <strong>Release date:</strong>
+    <%= movie.release_date %>
+  </p>
+
+  <p>
+    <strong>Country:</strong>
+    <%= movie.country %>
+  </p>
+
+  <p>
+    <strong>Film duration:</strong>
+    <%= Time.at(movie.film_duration).utc.strftime("%I:%M") %>
+  </p>
+
+  <p>
+    <strong>Rating:</strong>
+    <%= movie.rating %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= movie.comment %>
+  </p>
+
+  <p>
+    <strong>presentation:</strong>
+    <%= movie.presentation %>
+  </p>
+
+</div>

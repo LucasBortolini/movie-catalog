@@ -1,0 +1,116 @@
+<div>
+  <p style="color: green"><%= notice %></p>
+</div>
+<div class="w-full">
+<h1 class="font-bold">Movies</h1>
+<table id="customers" class="w-full table-auto rounded-sm">
+    <thead>
+      <tr>
+        <th
+          class="px-4 py-4 text-left bg-blue-900 text-white text-sm font-medium"
+        >
+          Name
+        </th>
+        <th
+          class="px-4 py-4 text-left bg-blue-900 text-white text-sm font-medium"
+        >
+          director
+        </th>
+        <th
+          class="px-4 py-4 text-left bg-blue-900 text-white text-sm font-medium"
+        >
+          writer
+        </th>
+        <th
+          class="px-4 py-4 text-left bg-blue-900 text-white text-sm font-medium"
+        >
+          genre
+        </th>
+        <th
+          class="px-4 py-4 text-left bg-blue-900 text-white text-sm font-medium"
+        >
+          parental rating
+        </th>
+        <th
+          class="px-4 py-4 text-left bg-blue-900 text-white text-sm font-medium"
+        >
+          release date
+        </th>
+        <th
+          class="px-4 py-4 text-left bg-blue-900 text-white text-sm font-medium"
+        >
+          country
+        </th>
+        <th
+          class="px-4 py-4 text-left bg-blue-900 text-white text-sm font-medium"
+        >
+          film duration
+        </th>
+        <th
+          class="px-4 py-4 text-left bg-blue-900 text-white text-sm font-medium"
+        >
+          rating
+        </th>
+        <th
+          class="px-4 py-4 text-left bg-blue-900 text-white text-sm font-medium"
+        >
+          comment
+        </th>
+        <th
+          class="px-4 py-4 text-left bg-blue-900 text-white text-sm font-medium"
+        >
+          presentation
+        </th>
+        <th
+          class="px-4 py-4 text-left bg-blue-900 text-white text-sm font-medium"
+        >
+          <%= link_to "New", new_movie_path, class: "inline-block rounded-sm font-medium border border-solid cursor-pointer text-center text-xs py-1 px-2 text-blue-800 bg-white border-white hover:bg-blue-200 hover:border-blue-200" %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <div id="movies">
+        <% @movies.each do |movie| %>
+          <tr class="border-gray-300">
+            <td class="px-4 py-8 border-t border-b border-gray-300 text-sm">
+              <%= movie.name %>
+            </td>
+            <td class="px-4 py-8 border-t border-b border-gray-300 text-sm">
+              <%= movie.director %>
+            </td>
+            <td class="px-4 py-8 border-t border-b border-gray-300 text-sm">
+              <%= movie.writer %>
+            </td>
+            <td class="px-4 py-8 border-t border-b border-gray-300 text-sm">
+              <%= movie.genre %>
+            </td>
+            <td class="px-4 py-8 border-t border-b border-gray-300 text-sm">
+              <%= movie.parental_rating %>
+            </td>
+            <td class="px-4 py-8 border-t border-b border-gray-300 text-sm">
+              <%= movie.release_date %>
+            </td>
+            <td class="px-4 py-8 border-t border-b border-gray-300 text-sm">
+              <%= movie.country %>
+            </td>
+            <td class="px-4 py-8 border-t border-b border-gray-300 text-sm">
+              <%= Time.at(movie.film_duration).utc.strftime("%I:%M") %>
+            </td>
+            <td class="px-4 py-8 border-t border-b border-gray-300 text-sm">
+              <%= movie.rating %>
+            </td>
+            <td class="px-4 py-8 border-t border-b border-gray-300 text-sm">
+              <%= movie.comment %>
+            </td>
+            <td class="px-4 py-8 border-t border-b border-gray-300 text-sm">
+              <%= movie.presentation %>
+            </td>
+            <td class="px-4 py-8 border-t border-b border-gray-300 text-sm">
+              <%= link_to "Show", movie, class: "inline-block rounded-sm font-medium border border-solid cursor-pointer text-center text-xs py-1 px-2 text-white bg-blue-800 border-blue-800 hover:bg-blue-600 hover:border-blue-600" %>
+            </td>
+          </tr>
+        <% end %>
+      </div>
+    </tbody>
+  </table>
+</div>

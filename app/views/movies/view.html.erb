@@ -1,0 +1,117 @@
+<section class="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-4 lg:pb-24 lg:px-8">
+  <p style="color: green"><%= notice %></p>
+  <nav class="flex" aria-label="Breadcrumb">
+    <ol class="inline-flex items-center space-x-1 md:space-x-3">
+      <li class="inline-flex items-center">
+        <a href="<%= root_path %>" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-900">
+          <svg class="mr-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+          Home
+        </a>
+      </li>
+      <li>
+        <div class="flex items-center">
+          <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+          <a href="#" class="ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2"><%= @movie.name %></a>
+        </div>
+      </li>
+    </ol>
+  </nav>
+  <div class="mt-4 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
+    <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+      <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl"><%= @movie.name %></h1>
+    </div>
+    <div class="mt-4 lg:mt-0 lg:row-span-3">
+      <h2 class="sr-only">Product information</h2>
+      <p class="text-3xl text-gray-900"></p>
+
+      <div id="comment-form">
+        <%= form_with(model: Comment.new) do |form| %>
+          <%= form.text_field :movie_id, value: @movie.id, style: "display: none" %>
+
+          <div class="mb-2">
+            <%= form.label :user, "Seu nome", class: "block mb-2 text-sm font-medium text-gray-900" %>
+            <%= form.text_field :user, required: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
+          </div>
+
+          <div>
+            <%= form.label :text, "Seu comentário", class: "block mb-2 text-sm font-medium text-gray-900" %>
+            <%= form.text_area :text, required: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 resize-none" %>
+          </div>
+
+          <div>
+            <%= form.submit class: "mt-10 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+          </div>
+        <% end %>
+      </div>
+      <div id="comments" class="mt-2 p-6 rounded-lg border border-gray-200">
+        <% @movie.comments.each do |comment| %>
+          <div class="border-b-2">
+            <p><b><%= comment.user %></b>: "<%= comment.text %>"</p>
+          </div>
+        <% end %>
+      </div>
+    </form>
+  </div>
+  <div class="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+    <div>
+      <h3 class="">Presentation</h3>
+      <div class="space-y-6">
+        <p class="text-base text-gray-900"><%= @movie.presentation %></p>
+      </div>
+    </div>
+    <div class="mt-10">
+      <h2 class="text-sm font-medium text-gray-900">Comment</h2>
+      <div class="mt-4 space-y-6">
+        <p class="text-sm text-gray-600"><%= @movie.comment %></p>
+      </div>
+    </div>
+    <div class="mt-4">
+      <h2 class="text-sm font-medium text-gray-900">Director</h2>
+      <div class="mt-4 space-y-6">
+        <p class="text-sm text-gray-600"><%= @movie.director %></p>
+      </div>
+    </div>
+    <div class="mt-4">
+      <h2 class="text-sm font-medium text-gray-900">Writer</h2>
+      <div class="mt-4 space-y-6">
+        <p class="text-sm text-gray-600"><%= @movie.writer %></p>
+      </div>
+    </div>
+    <div class="mt-4">
+      <h2 class="text-sm font-medium text-gray-900">Parental Rating</h2>
+      <div class="mt-4 space-y-6">
+        <p class="text-sm text-gray-600"><%= @movie.parental_rating %></p>
+      </div>
+    </div>
+    <div class="mt-4">
+      <h2 class="text-sm font-medium text-gray-900">Release Date</h2>
+      <div class="mt-4 space-y-6">
+        <p class="text-sm text-gray-600"><%= @movie.release_date %></p>
+      </div>
+    </div>
+    <div class="mt-4">
+      <h2 class="text-sm font-medium text-gray-900">Country</h2>
+      <div class="mt-4 space-y-6">
+        <p class="text-sm text-gray-600"><%= @movie.country %></p>
+      </div>
+    </div>
+    <div class="mt-4">
+      <h2 class="text-sm font-medium text-gray-900">Duration</h2>
+      <div class="mt-4 space-y-6">
+        <p class="text-sm text-gray-600"><%= Time.at(@movie.film_duration).utc.strftime("%I:%M") %></p>
+      </div>
+    </div>
+    <div class="mt-4">
+      <h2 class="text-sm font-medium text-gray-900">Rating</h2>
+      <div class="mt-4 space-y-6">
+        <p class="text-sm text-gray-600"><%= @movie.rating %></p>
+      </div>
+    </div>
+    <div class="mt-4">
+      <h2 class="text-sm font-medium text-gray-900">Gender</h2>
+      <div class="mt-4 space-y-6">
+        <p class="text-sm text-gray-600"><%= @movie.genre %></p>
+      </div>
+    </div>
+  </div>
+</section>

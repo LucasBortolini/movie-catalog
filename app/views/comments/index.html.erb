@@ -1,0 +1,52 @@
+<div>
+<p style="color: green"><%= notice %></p>
+</div>
+<div class="w-full">
+  <h1 class="font-bold">Comments</h1>
+  <table id="comments" class="w-full table-auto rounded-sm">
+    <thead>
+      <tr>
+        <th
+          class="px-4 py-4 text-left bg-blue-900 text-white text-sm font-medium"
+        >
+          movie name
+        </th>
+        <th
+          class="px-4 py-4 text-left bg-blue-900 text-white text-sm font-medium"
+        >
+          user
+        </th>
+        <th
+          class="px-4 py-4 text-left bg-blue-900 text-white text-sm font-medium"
+        >
+          text
+        </th>
+        <th
+          class="px-4 py-4 text-left bg-blue-900 text-white text-sm font-medium"
+        >
+          <%= link_to "New", new_comment_path, class: "inline-block rounded-sm font-medium border border-solid cursor-pointer text-center text-xs py-1 px-2 text-blue-800 bg-white border-white hover:bg-blue-200 hover:border-blue-200" %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <div id="comments">
+        <% @comments.each do |comment| %>
+          <tr class="border-gray-300">
+            <td class="px-4 py-8 border-t border-b border-gray-300 text-sm">
+              <%= comment.movie.name %>
+            </td>
+            <td class="px-4 py-8 border-t border-b border-gray-300 text-sm">
+              <%= comment.user %>
+            </td>
+            <td class="px-4 py-8 border-t border-b border-gray-300 text-sm">
+              <%= comment.text %>
+            </td>
+            <td class="px-4 py-8 border-t border-b border-gray-300 text-sm">
+              <%= link_to "Show", comment, class: "inline-block rounded-sm font-medium border border-solid cursor-pointer text-center text-xs py-1 px-2 text-white bg-blue-800 border-blue-800 hover:bg-blue-600 hover:border-blue-600" %>
+            </td>
+          </tr>
+        <% end %>
+      </div>
+    </tbody>
+  </table>
+</div>
